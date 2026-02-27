@@ -371,12 +371,13 @@ if len(youtube_data) > 10:
     
     fig_corr = px.imshow(
         corr_data,
-        text_auto='.2f',
+        text_auto=True,
         title='Correlation Matrix: Screen Time vs Engagement Metrics',
         color_continuous_scale='RdBu',
         zmin=-1, zmax=1,
         aspect='auto'
     )
+    fig_corr.update_traces(text=corr_data.round(2).values, hovertemplate='%{text:.2f}')
     st.plotly_chart(fig_corr, use_container_width=True)
     
     # Scatter plots
